@@ -7,14 +7,15 @@ values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
 deck = [{'suit': suit, 'value': value} for suit in suits for value in values]
 
-# Function to deal cards to players
 def deal_cards(players):
+    # Make a copy of the original deck to avoid modifying the original deck
+    current_deck = list(deck)
     hands = [[] for _ in range(players)]
-    random.shuffle(deck)
+    random.shuffle(current_deck)
     
     for _ in range(2):
         for i in range(players):
-            card = deck.pop()
+            card = current_deck.pop()
             hands[i].append(card)
             
     return hands
